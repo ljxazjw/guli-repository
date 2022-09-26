@@ -44,6 +44,8 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <!-- swagger -->
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
