@@ -3,12 +3,9 @@ package com.bjpowernode.gulimall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.bjpowernode.gulimall.product.vo.SpuSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.bjpowernode.gulimall.product.entity.SpuInfoEntity;
 import com.bjpowernode.gulimall.product.service.SpuInfoService;
@@ -30,6 +27,19 @@ public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
 
+
+    /**
+     *
+     * 商品上架的功能
+     *
+     */
+
+    @PostMapping("/{spuId}/up")
+    public R spuUp(@PathVariable("spuId") Long spuId){
+        spuInfoService.up(spuId);
+        return R.ok();
+
+    }
     /**
      * 列表
      */
@@ -55,8 +65,10 @@ public class SpuInfoController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody SpuInfoEntity spuInfo){
-		spuInfoService.save(spuInfo);
+    public R save(@RequestBody SpuSaveVo vo){
+//		spuInfoService.save(spuInfo);
+        spuInfoService.saveSpuInfo(vo);
+
 
         return R.ok();
     }

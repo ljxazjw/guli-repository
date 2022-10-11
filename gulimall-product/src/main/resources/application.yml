@@ -15,6 +15,9 @@ spring:
         endpoint: oss-cn-beijing.aliyuncs.com
   application:
     name: gulimall-product
+  redis:
+    host: 192.168.174.1
+    port: 6379
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -26,6 +29,7 @@ mybatis-plus:
 
 server:
   port: 9999
+
 
 
 
