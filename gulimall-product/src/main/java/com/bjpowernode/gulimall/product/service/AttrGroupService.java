@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.bjpowernode.common.utils.PageUtils;
 import com.bjpowernode.gulimall.product.entity.AttrGroupEntity;
 import com.bjpowernode.gulimall.product.vo.AttrGroupWithAttrsVo;
+import com.bjpowernode.gulimall.product.vo.SkuItemVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -23,5 +25,7 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
 
     List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCatelogId(Long catelogId);
 
+
+//    List<SkuItemVo.SpuItemBaseAttrVo> getAttrGroupWithAttrsBySpuId(@Param("spuId") Long spuId, @Param("catalogId") Long catalogId);
 }
 

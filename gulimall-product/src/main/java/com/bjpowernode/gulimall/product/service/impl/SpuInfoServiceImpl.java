@@ -222,9 +222,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
 
         //发送远程调用，库存系统是否有库存
-        R hasStock = wareFeignService.getSkusHasStock(skuIdList);
+//        R hasStock = wareFeignService.getSkusHasStock(skuIdList);
 
-        hasStock.get()
 
 
         //封装每个sku的信息

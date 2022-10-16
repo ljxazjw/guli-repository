@@ -1,5 +1,10 @@
 package com.bjpowernode.gulimall.product.service.impl;
 
+import com.bjpowernode.gulimall.product.entity.SkuImagesEntity;
+import com.bjpowernode.gulimall.product.entity.SpuInfoDescEntity;
+import com.bjpowernode.gulimall.product.service.*;
+import com.bjpowernode.gulimall.product.vo.SkuItemVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,11 +17,19 @@ import com.bjpowernode.common.utils.Query;
 
 import com.bjpowernode.gulimall.product.dao.SkuInfoDao;
 import com.bjpowernode.gulimall.product.entity.SkuInfoEntity;
-import com.bjpowernode.gulimall.product.service.SkuInfoService;
 
 
 @Service("skuInfoService")
 public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> implements SkuInfoService {
+
+    @Autowired
+    SkuImagesService imagesService;
+
+    @Autowired
+    SpuInfoDescService descService;
+
+    @Autowired
+    AttrGroupService attrGroupService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -40,6 +53,30 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
 
         return list;
+    }
+
+    @Override
+    public SkuItemVo item(Long skuId) {
+         SkuItemVo skuItemVo = new SkuItemVo();
+//        sku的基本信息获取
+        SkuInfoEntity info = getById(skuId);
+        skuItemVo.setInfo(info);
+        Long catalogId = info.getCatalogId();
+        Long spuId = info.getSpuId();
+
+//       sku的图片信息
+        List<SkuImagesEntity> images = imagesService.getImagesBySkuId(skuId);
+        skuItemVo.setImages(images);
+//        获取spu的介绍
+
+        SpuInfoDescEntity  spuInfoDescEntity = descService.getById(spuId);
+        skuItemVo.setDesp(spuInfoDescEntity);
+
+//        获取规格参数信息
+        List<SkuItemVo.SpuItemBaseAttrVo> attrGroupVo = attrGroupService.getAttrGroupWithAttrsBySpuId(spuId,catalogId);
+        skuItemVo.setGroupAttrs(attrGroupVo);
+
+        return null;
     }
 
 }

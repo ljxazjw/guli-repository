@@ -1,5 +1,6 @@
 package com.bjpowernode.gulimall.order.service.impl;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -24,6 +25,22 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemDao, OrderItemEnt
         );
 
         return new PageUtils(page);
+    }
+
+    /**
+     *
+     * queue:声明监听的所有队列
+     *
+     *
+     * 参数可以写以下的类型
+     * Message 原生的消息类型，头+体
+     *
+     *
+     */
+    @RabbitListener(queues = {"hello-java-queue"})
+    public void  recieveMessage(Object message){
+
+
     }
 
 }

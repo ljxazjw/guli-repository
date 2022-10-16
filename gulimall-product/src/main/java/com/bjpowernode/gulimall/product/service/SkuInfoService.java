@@ -3,6 +3,7 @@ package com.bjpowernode.gulimall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.bjpowernode.common.utils.PageUtils;
 import com.bjpowernode.gulimall.product.entity.SkuInfoEntity;
+import com.bjpowernode.gulimall.product.vo.SkuItemVo;
 
 import java.util.List;
 import java.util.Map;
@@ -21,5 +22,7 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
     void saveSkyInfo(SkuInfoEntity skuInfoEntity);
 
     List<SkuInfoEntity> getSkusBySpuId(Long spuId);
+
+    SkuItemVo item(Long skuId);
 }
 

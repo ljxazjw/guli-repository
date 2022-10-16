@@ -3,6 +3,7 @@ package com.bjpowernode.gulimall.product.service.impl;
 import com.bjpowernode.gulimall.product.entity.AttrEntity;
 import com.bjpowernode.gulimall.product.service.AttrService;
 import com.bjpowernode.gulimall.product.vo.AttrGroupWithAttrsVo;
+import com.bjpowernode.gulimall.product.vo.SkuItemVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,4 +86,14 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
 
     }
 
-}
+//    @Override
+//    public List<SkuItemVo.SpuItemBaseAttrVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId) {
+//        return null;
+    }
+
+//    @Override
+//    public List<SkuItemVo.SpuItemBaseAttrVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId) {
+////        查出当前spu对应的所有属性分组信息以及对应的值
+////        AttrGroupDao baseMapper = getBaseMapper();
+////        List<SkuItemVo.SpuItemBaseAttrVo> Vos = baseMapper.getAttrGroupWithAttrsBySpuId(spuId,catalogId);
+//    }
